@@ -88,17 +88,17 @@ vec4 ray_march(int step_count)
 	}
 	else
 	{
-        float x_intersect = drawing_distance / abs(ray_direction.x);
+                float x_intersect = drawing_distance / abs(ray_direction.x);
 
-        float y_intersect_1 = -1.0 * (camera_position.y - cloud_base) / ray_direction.y;
-        float y_intersect_2 = (cloud_top - camera_position.y) / ray_direction.y;
+                float y_intersect_1 = (camera_position.y - cloud_base) / ray_direction.y;
+                float y_intersect_2 = (cloud_top - camera_position.y) / ray_direction.y;
 
-        float z_intersect = drawing_distance / abs(ray_direction.z);
+                float z_intersect = drawing_distance / abs(ray_direction.z);
 
-        float min_1 = min(x_intersect, z_intersect);
-        float max_1 = max(y_intersect_1, y_intersect_2);
+                float min_1 = min(x_intersect, z_intersect);
+                float max_1 = max(y_intersect_1, y_intersect_2);
 
-        ray_end_distance = min(min_1, max_1);
+                ray_end_distance = min(min_1, max_1);
 	}
 
 	float step_size = (ray_end_distance - ray_start_distance) / step_count;
